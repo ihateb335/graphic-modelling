@@ -4,7 +4,7 @@
     "net6.0": {
       "GraphicModellingLibrary/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": "Unsupported,Version=v0.0",
         "compile": {
           "bin/placeholder/GraphicModellingLibrary.dll": {}
         },
@@ -78,13 +78,19 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Проект GraphicModellingLibrary несовместим с net6.0 (.NETCoreApp,Version=v6.0). Проект GraphicModellingLibrary поддерживает: net5.0-windows7.0 (.NETCoreApp,Version=v5.0)",
+      "libraryId": "GraphicModellingLibrary",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

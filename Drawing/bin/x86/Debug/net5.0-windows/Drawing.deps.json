@@ -1,0 +1,78 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Drawing/1.0.0": {
+        "dependencies": {
+          "GraphicModellingLibrary": "1.0.0",
+          "Microsoft.DirectX.Direct3D": "1.0.2902.0",
+          "Microsoft.DirectX.Direct3DX": "1.0.2902.0",
+          "Microsoft.DirectX": "1.0.2902.0"
+        },
+        "runtime": {
+          "Drawing.dll": {}
+        }
+      },
+      "GraphicModellingLibrary/1.0.0": {
+        "runtime": {
+          "GraphicModellingLibrary.dll": {}
+        }
+      },
+      "Microsoft.DirectX.Direct3D/1.0.2902.0": {
+        "runtime": {
+          "Microsoft.DirectX.Direct3D.dll": {
+            "assemblyVersion": "1.0.2902.0",
+            "fileVersion": "9.5.132.0"
+          }
+        }
+      },
+      "Microsoft.DirectX.Direct3DX/1.0.2902.0": {
+        "runtime": {
+          "Microsoft.DirectX.Direct3DX.dll": {
+            "assemblyVersion": "1.0.2902.0",
+            "fileVersion": "5.4.0.3900"
+          }
+        }
+      },
+      "Microsoft.DirectX/1.0.2902.0": {
+        "runtime": {
+          "Microsoft.DirectX.dll": {
+            "assemblyVersion": "1.0.2902.0",
+            "fileVersion": "5.4.0.2904"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Drawing/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GraphicModellingLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.DirectX.Direct3D/1.0.2902.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.DirectX.Direct3DX/1.0.2902.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.DirectX/1.0.2902.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
