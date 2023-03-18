@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z3dkDF1Dn/+EzWITNKon5W+UQFYiKyReuAExsx5PQaaVwlc82YdbVbfARVfV9LZe1ouwYXZwnmgpgbGNGiF6hg==",
+  "dgSpecHash": "N9Np6LExEemPUfiqWTAQ0nMLBkhYxcn5XD6CDCfxVStIRdUV96o3x9KgVggLd5OyxnNUaGtmMCcC3AOW0A9W6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\MrZahn\\source\\repos\\University\\Laboratory\\4 курс\\Graphic_Modelling\\GraphicModellingLibrary\\Test\\Test.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\MrZahn\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
