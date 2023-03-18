@@ -1,0 +1,12 @@
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.csproj.AssemblyReference.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.AssemblyInfoInputs.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.AssemblyInfo.cs
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.csproj.CoreCompileInputs.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\bin\Debug\net6.0\GraphicModellingLibrary.deps.json
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\bin\Debug\net6.0\GraphicModellingLibrary.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\bin\Debug\net6.0\GraphicModellingLibrary.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\refint\GraphicModellingLibrary.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\GraphicModellingLibrary.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary\obj\Debug\net6.0\ref\GraphicModellingLibrary.dll
