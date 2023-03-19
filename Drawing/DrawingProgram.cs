@@ -8,7 +8,7 @@ using GraphicModellingLibrary._3D_Display;
 
 namespace Drawing
 {
-    internal static class Program
+    internal static class DrawingProgram
     {
         /// <summary>
         /// Главная точка входа для приложения.

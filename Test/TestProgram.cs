@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace Test1
 {
-    internal class Program
+    internal class TestProgram
     {
         static void Main(string[] args)
         {
