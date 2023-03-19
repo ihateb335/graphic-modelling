@@ -1,38 +1,27 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using GraphicModellingLibrary._3D_Display;
-using GraphicModellingLibrary;
 
 namespace Drawing
 {
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// –ì–ª–∞–≤–Ω–∞—è —Ç–æ—á–∫–∞ –≤—Ö–æ–¥–∞ –¥–ª—è –ø—Ä–∏–ª–æ–∂–µ–Ω–∏—è.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                // Create facade object
-                var f = new DirectX9Facade();
-            }
-            catch (Exception ex)
-            {
-                // Output error message to console
-                MessageBox.Show(ex.Message, "Œ¯Ë·Í‡ ËÌËˆË‡ÎËÁ‡ˆËË");
-            }
-            
-            //Application.Run(new Form1(new DirectX9Facade()));
-            Application.Run(new Form2());
+
+            var Form = new Form1(new DirectX9Facade());
+            Application.Idle += Form.OnIdle;
+            Application.Run(Form);
         }
     }
 }

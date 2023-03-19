@@ -12,7 +12,7 @@ namespace GraphicModellingLibrary
     {
         private static readonly double Alpha = Math.PI / 2.0;
         public Vector3 Link { get; set; }
-        public CinematicPair? LinkHolder { get; set; } = null;
+        public CinematicPair LinkHolder { get; set; } = null;
         public double Fi { get; set; } = Math.PI / 2.0;
         public double K { get; set; } = 1;
 

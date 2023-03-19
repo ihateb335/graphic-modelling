@@ -1,0 +1,17 @@
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.csproj.AssemblyReference.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.csproj.SuggestedBindingRedirects.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.Form1.resources
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.Properties.Resources.resources
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.csproj.GenerateResource.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.csproj.CoreCompileInputs.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\Drawing.exe.config
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\Drawing.exe
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\Drawing.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\GraphicModellingLibrary.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\Microsoft.DirectX.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\bin\Debug\GraphicModellingLibrary.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.csproj.CopyComplete
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.exe
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Drawing\obj\Debug\Drawing.pdb

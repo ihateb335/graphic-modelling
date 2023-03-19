@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 using System.Numerics;
 
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra;
-
 namespace GraphicModellingLibrary
 {
     public static class Vector3Extensions

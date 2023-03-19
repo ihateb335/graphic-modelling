@@ -1,0 +1,10 @@
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\obj\Debug\GraphicModellingLibrary1.csproj.AssemblyReference.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\obj\Debug\GraphicModellingLibrary1.csproj.CoreCompileInputs.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\bin\Debug\GraphicModellingLibrary1.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\bin\Debug\GraphicModellingLibrary1.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\bin\Debug\Microsoft.DirectX.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\obj\Debug\GraphicModellingLibrary1.csproj.CopyComplete
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\obj\Debug\GraphicModellingLibrary1.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\GraphicModellingLibrary1\obj\Debug\GraphicModellingLibrary1.pdb

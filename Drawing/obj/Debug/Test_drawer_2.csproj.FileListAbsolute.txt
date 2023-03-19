@@ -1,0 +1,17 @@
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\Test_drawer_2.exe.config
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\Test_drawer_2.exe
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\Test_drawer_2.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\Microsoft.DirectX.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.csproj.AssemblyReference.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.csproj.SuggestedBindingRedirects.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.Properties.Resources.resources
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.csproj.GenerateResource.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.csproj.CoreCompileInputs.cache
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.csproj.CopyComplete
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.exe
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Test_drawer_2.pdb
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\obj\Debug\Drawing.Form1.resources
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\GraphicModellingLibrary.dll
+C:\Users\MrZahn\source\repos\University\Laboratory\4 курс\Graphic_Modelling\GraphicModellingLibrary\Test_drawer_2\bin\Debug\GraphicModellingLibrary.pdb
