@@ -17,13 +17,16 @@ namespace GraphicModellingLibrary._3D_Display
         void RetrieveCamera(Vector3 vector);
         void RetrieveFocus(Vector3 vector);
         void Paint();
-        void UserControl(KeyEventArgs e);
+
+        void UserControl(IEnumerable<Keys> keys);
+        void MouseControl(float X, float Y);
 
         int Width { get; set; }
         int Height { get; set; }
 
-        Matrix POV { get; set; }
-        Matrix Target { get; set; }
+        Device d3d { get; }
+
+        Keys[] keys { get; }
 
         event InvalidateDelegate On_Invalidate;
     }

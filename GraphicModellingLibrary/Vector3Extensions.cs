@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 using System.Numerics;
 
+using Vector3DX = Microsoft.DirectX.Vector3;
+
 namespace GraphicModellingLibrary
 {
     public static class Vector3Extensions
     {
-      
         public static string PrintVector(this Vector3 Vector) => $"{Vector.X,5:F2} {Vector.Y,5:F2} {Vector.Z,5:F2}";
 
         public static PointF Vector3ToPoint(this Vector3 vector) => new PointF { X = vector.X, Y = vector.Y };
         public static Vector3 PointToVector3(this PointF vector) => new Vector3 { X = vector.X, Y = vector.Y };
+        public static Vector3DX Vector3DX(this Vector3 vector) => new Vector3DX { X = vector.X,Y = vector.Y, Z = vector.Z };
 
         public static double[,] VectorsToMatrix(this Vector3[] vectors)
         {

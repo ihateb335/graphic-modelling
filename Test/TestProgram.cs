@@ -7,10 +7,10 @@ namespace Test1
     {
         static void Main(string[] args)
         {
-            CinematicPair previous_pair = null;
+            KinematicPair previous_pair = null;
             for (int i = 0; i < 7; i++)
             {
-                var pair = new CinematicPair
+                var pair = new KinematicPair
                 {
                     Fi = 0,
                     Link = Vector3.UnitY,

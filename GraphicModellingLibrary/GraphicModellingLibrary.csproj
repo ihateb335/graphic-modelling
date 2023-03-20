@@ -58,10 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3D Display\DirectX9Facade.cs" />
-    <Compile Include="3D Display\IFormDisplayer.cs" />
-    <Compile Include="3D Display\IObjectToDisplay.cs" />
+    <Compile Include="3D Display\Interfaces\IFormDisplayer.cs" />
+    <Compile Include="3D Display\Interfaces\IObjectToDisplay.cs" />
+    <Compile Include="3D Display\KinematicPairMesh.cs" />
     <Compile Include="3D Display\TestTriangle.cs" />
-    <Compile Include="CinematicPair.cs" />
+    <Compile Include="KinematicPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector3Extensions.cs" />
   </ItemGroup>

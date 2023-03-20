@@ -8,13 +8,20 @@ using System.Numerics;
 
 namespace GraphicModellingLibrary
 {
-    public class CinematicPair
+    public class KinematicPair
     {
         private static readonly double Alpha = Math.PI / 2.0;
-        public Vector3 Link { get; set; }
-        public CinematicPair LinkHolder { get; set; } = null;
+
+        public KinematicPair(float Length, int K = 1) {
+            this.Length = Length;
+            this.K = K;
+        }
+
+        public float Length { get => Link.Y; set => Link = new Vector3(0,value,0); }
+        public Vector3 Link { get; private set; } = Vector3.Zero;
+        public KinematicPair LinkHolder { get; set; } = null;
         public double Fi { get; set; } = Math.PI / 2.0;
-        public double K { get; set; } = 1;
+        public int K { get; set; } = 1;
 
         /// <summary>
         /// Rotation matrix - M in notation
