@@ -73,6 +73,7 @@ namespace GraphicModellingLibrary._3D_Display
         private void SetupCamera()
         {
             d3d.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 4, Width / Height, 1.0f, 50.0f);
+
             d3d.Transform.View = Matrix.LookAtLH(CameraPosition, CameraTarget, new Vector3(0.0f, 1.0f, 0.0f));
         }
         /// <summary>
@@ -81,8 +82,8 @@ namespace GraphicModellingLibrary._3D_Display
 
         private void SetLight()
         {
-            d3d.Lights[0].Position = new Vector3(10.0f, 10.0f, 10.0f);
             d3d.Lights[0].Diffuse = Color.White;
+            d3d.Lights[0].Position = new Vector3(CameraPosition.X, CameraPosition.Y, CameraPosition.Z);
             d3d.Lights[0].Enabled = true;
         }
 
@@ -136,7 +137,7 @@ namespace GraphicModellingLibrary._3D_Display
             }
         }
         private readonly Keys[] _keys = new Keys[] { Keys.W, Keys.S, Keys.A, Keys.D, Keys.C, Keys.Space
-        , Keys.I, Keys.K, Keys.J, Keys.L};
+        , Keys.I, Keys.K, Keys.J, Keys.L, Keys.Y, Keys.H};
 
         public Keys[] keys => _keys;
 
@@ -152,6 +153,11 @@ namespace GraphicModellingLibrary._3D_Display
            
             Vector3 camera_vector = new Vector3();
             Vector3 camera_target = new Vector3();
+
+
+            Vector3 x_vector = new Vector3(0.05f, 0, 0);
+            Vector3 y_vector = new Vector3(0, 0.05f, 0);
+            Vector3 z_vector = new Vector3(0, 0, 0.05f);
             foreach (var e in keyValues)
             {
                 switch (e)
@@ -195,22 +201,32 @@ namespace GraphicModellingLibrary._3D_Display
 
                     case Keys.I:
                         {
-                            camera_target = new Vector3(0f, 0.05f, 0f);
+                            camera_target = y_vector;
                             break;
                         }
                     case Keys.K:
                         {
-                            camera_target = new Vector3(0f, -0.05f, 0f);
+                            camera_target = -y_vector;
                             break;
                         }
                     case Keys.J:
                         {
-                            camera_target = new Vector3(-0.05f, 0f, 0f);
+                            camera_target = -x_vector;
                             break;
                         }
                     case Keys.L:
                         {
-                            camera_target = new Vector3(0.05f, 0f, 0f);
+                            camera_target = x_vector;
+                            break;
+                        }
+                    case Keys.Y:
+                        {
+                            camera_target = z_vector;
+                            break;
+                        }
+                    case Keys.H:
+                        {
+                            camera_target = -z_vector;
                             break;
                         }
 
@@ -229,7 +245,7 @@ namespace GraphicModellingLibrary._3D_Display
 
         public void MouseControl(float X, float Y)
         {
-            CameraTarget += new Vector3(X, Y, 0);
+            //CameraTarget += new Vector3(X, Y, 0);
         }
 
         private class Subscription : IDisposable

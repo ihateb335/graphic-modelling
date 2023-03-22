@@ -12,12 +12,13 @@ namespace GraphicModellingLibrary
     {
         private static readonly double Alpha = Math.PI / 2.0;
 
-        public KinematicPair(float Length, int K = 1) {
+        public KinematicPair(float Length, int K = 1)
+        {
             this.Length = Length;
             this.K = K;
         }
 
-        public float Length { get => Link.Y; set => Link = new Vector3(0,value,0); }
+        public float Length { get => Link.Y; set => Link = new Vector3(0, value, 0); }
         public Vector3 Link { get; private set; } = Vector3.Zero;
         public KinematicPair LinkHolder { get; set; } = null;
         public double Fi { get; set; } = Math.PI / 2.0;
@@ -26,7 +27,7 @@ namespace GraphicModellingLibrary
         /// <summary>
         /// Rotation matrix - M in notation
         /// </summary>
-        public double[,] M => new double[3,3] {
+        public double[,] M => new double[3, 3] {
                  { Math.Cos(Fi),  Math.Sin(Fi), 0.0 },
                  {-Math.Sin(Fi),  Math.Cos(Fi), 0.0 },
                  { 0.0,           0.0,          1.0 },
@@ -35,25 +36,25 @@ namespace GraphicModellingLibrary
         /// <summary>
         /// Transition matrix - A 
         /// </summary>
-        public double[,] A => new double[3,3] {
-                 { Math.Cos(K * Alpha), 0.0, -Math.Sin(K * Alpha), },
+        public double[,] A => new double[3, 3] {
                  { Math.Sin(K * Alpha), 0.0, Math.Cos(K * Alpha), },
+                 { Math.Cos(K * Alpha), 0.0, -Math.Sin(K * Alpha), },
                  { 0.0,          1.0, 0.0           },
         };
 
-        public Vector3 AbsLink
+        public Vector3 AbsLink(bool transformed_vector = false)
         {
-            get {
-                if (LinkHolder == null) return Link;
-                var current_holder = this;
-                var result_vector = Link;
-                while(current_holder.LinkHolder != null)
-                {
-                   result_vector = result_vector.RightMultiply(current_holder.M).RightMultiply(A);
-                   current_holder = current_holder.LinkHolder;
-                }
-                return LinkHolder.AbsLink + result_vector;
+
+            if (LinkHolder == null) return Link;
+            var current_holder = this;
+            var result_vector = Link;
+            while (current_holder.LinkHolder != null)
+            {
+                result_vector = result_vector.RightMultiply(current_holder.M).RightMultiply(A);
+                current_holder = current_holder.LinkHolder;
             }
+            return (transformed_vector ? Vector3.Zero : LinkHolder.AbsLink(transformed_vector)) + result_vector;
+
         }
 
     }

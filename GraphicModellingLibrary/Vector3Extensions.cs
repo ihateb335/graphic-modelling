@@ -13,11 +13,52 @@ namespace GraphicModellingLibrary
 {
     public static class Vector3Extensions
     {
+        public static Vector3DX OrientVector(this Vector3DX vector)
+        {
+            return vector.Vector3FromDX().OrientVector().Vector3DX();
+        }
+        public static Vector3 OrientVector(this Vector3 vector)
+        {
+            float X = vector.X,
+                Y = vector.Y,
+                Z = vector.Z;               ;
+            if (X == 0 && Y == 0) return Vector3.Zero;
+            if (X == 0 && Y != 0)
+            {
+                float acos = (float)Math.Acos(Z / Math.Sqrt(Z * Z + Y * Y));
+                if (X * Y > 0) return new Vector3(-acos, 0, 0);
+                if (X * Y < 0) return new Vector3(acos, 0, 0);
+                return new Vector3((float)(Math.PI / 2.0), 0, 0);
+            }
+            if(X != 0 && Y == 0)
+            {
+                float acos = (float)Math.Acos(Z / Math.Sqrt(Z * Z + X * X));
+                if (X * Z > 0) return new Vector3(0, -acos, 0);
+                if (X * Z < 0) return new Vector3(0, acos, 0);
+                return new Vector3((float)(Math.PI / 2.0), 0, 0);
+            }
+            if(X != 0 && Y != 0 && Z == 0)
+            {
+                float acos = (float)Math.Acos(X / Math.Sqrt(Y * Y + X * X));
+                if (X * Y > 0) return new Vector3(0, 0, acos);
+                return new Vector3(0, (float)(Math.PI / 2.0), acos);
+            }
+            float atg = (float)Math.Atan(Y / Z);
+            float lx = 0;
+            if (Y > 0 && Z > 0) lx = -atg;
+            if (Y < 0 && Z > 0) lx = atg;
+            if (Y < 0 && Z < 0) lx = (float)Math.PI - atg;
+            if (Y > 0 && Z < 0) lx = (float)Math.PI + atg;
+            
+            return new Vector3(lx,(float)(Math.Asin(X)),0);
+        }
+
         public static string PrintVector(this Vector3 Vector) => $"{Vector.X,5:F2} {Vector.Y,5:F2} {Vector.Z,5:F2}";
 
         public static PointF Vector3ToPoint(this Vector3 vector) => new PointF { X = vector.X, Y = vector.Y };
         public static Vector3 PointToVector3(this PointF vector) => new Vector3 { X = vector.X, Y = vector.Y };
         public static Vector3DX Vector3DX(this Vector3 vector) => new Vector3DX { X = vector.X,Y = vector.Y, Z = vector.Z };
+        public static Vector3 Vector3FromDX(this Vector3DX vector) => new Vector3 { X = vector.X,Y = vector.Y, Z = vector.Z };
 
         public static double[,] VectorsToMatrix(this Vector3[] vectors)
         {

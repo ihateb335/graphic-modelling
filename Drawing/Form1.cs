@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using Microsoft.DirectX;
 
+using GraphicModellingLibrary;
 using GraphicModellingLibrary._3D_Display;
 
 namespace Drawing
@@ -49,11 +50,22 @@ namespace Drawing
             if (_formDisplayer.BuildUp(this)) Close();
 
             //IObjectToDisplay test = new TestTriangle(_formDisplayer, Width, Height);
+            IObjectToDisplay axis = new AxisDisplay(_formDisplayer);
 
-            IObjectToDisplay pair = new KinematicPairMesh(_formDisplayer, new GraphicModellingLibrary.KinematicPair(5));
 
-
-            _formDisplayer.RetrieveCamera(new Vector3(0, 0, 0.0f));
+            KinematicPair previous_pair = null;
+            for (int i = 0; i < 3; i++)
+            {
+                var _pair = new KinematicPair(5.0f)
+                {
+                    LinkHolder = previous_pair,
+                    
+                };
+                IObjectToDisplay pair = new KinematicPairMesh(_formDisplayer, _pair);
+                previous_pair = _pair;
+            }
+                   
+            _formDisplayer.RetrieveCamera(new Vector3(0, 3, 5.0f));
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
