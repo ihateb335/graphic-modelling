@@ -19,38 +19,60 @@ namespace GraphicModellingLibrary
         }
         public static Vector3 OrientVector(this Vector3 vector)
         {
-            float X = vector.X,
-                Y = vector.Y,
-                Z = vector.Z;               ;
-            if (X == 0 && Y == 0) return Vector3.Zero;
-            if (X == 0 && Y != 0)
+            float X = (float)Math.Round(vector.X, 2),
+                Y = (float)Math.Round(vector.Y, 2),
+                Z = (float)Math.Round(vector.Z, 2)
+            ;
+            float pi_2 = (float)(Math.PI / 2.0);
+
+            //1) X=0, Y=0, Z=0
+            if (X == 0 && Y == 0 && Z == 0) return Vector3.Zero;
+            //2) X=0, Y!=0, Z=0
+            else if (X == 0 && Y != 0 && Z == 0)
+            {
+                var pi_cur = pi_2;
+                if (Y > 0) pi_cur = -pi_cur;
+
+                return new Vector3(pi_cur, 0, 0);
+            }
+            //3) X=0,Y!=0,Z!=0
+            else if (X == 0 && Y != 0 && Z != 0)
             {
                 float acos = (float)Math.Acos(Z / Math.Sqrt(Z * Z + Y * Y));
-                if (X * Y > 0) return new Vector3(-acos, 0, 0);
-                if (X * Y < 0) return new Vector3(acos, 0, 0);
-                return new Vector3((float)(Math.PI / 2.0), 0, 0);
+                if (Y > 0) acos = -acos;
+                return new Vector3(acos, 0, 0);
             }
-            if(X != 0 && Y == 0)
+            //4) X!=0, Y=0, Z=0
+            else if(X != 0 && Y == 0 && Z == 0)
+            {
+                var pi_cur = pi_2;
+                if (X < 0) pi_cur = -pi_cur;
+                return new Vector3(0,  pi_cur, 0);
+            }
+            //5) X!=0, Y=0, Z!=0
+            else if(X!=0 && Y == 0 && Z != 0)
             {
                 float acos = (float)Math.Acos(Z / Math.Sqrt(Z * Z + X * X));
-                if (X * Z > 0) return new Vector3(0, -acos, 0);
-                if (X * Z < 0) return new Vector3(0, acos, 0);
-                return new Vector3((float)(Math.PI / 2.0), 0, 0);
+                if (X < 0) acos = -acos;
+                return new Vector3(0, acos, 0);
             }
-            if(X != 0 && Y != 0 && Z == 0)
+
+            //6) X!=0, Y!=0, Z=0 
+            else if (X == 0 && Y != 0 && Z != 0)
             {
                 float acos = (float)Math.Acos(X / Math.Sqrt(Y * Y + X * X));
-                if (X * Y > 0) return new Vector3(0, 0, acos);
-                return new Vector3(0, (float)(Math.PI / 2.0), acos);
+                if (X < 0) acos = -acos;
+
+                return new Vector3(0,pi_2,acos);
             }
-            float atg = (float)Math.Atan(Y / Z);
-            float lx = 0;
-            if (Y > 0 && Z > 0) lx = -atg;
-            if (Y < 0 && Z > 0) lx = atg;
-            if (Y < 0 && Z < 0) lx = (float)Math.PI - atg;
-            if (Y > 0 && Z < 0) lx = (float)Math.PI + atg;
-            
-            return new Vector3(lx,(float)(Math.Asin(X)),0);
+            //7) X!=0, Y!=0, Z!=0
+            else
+            {
+                float asinx = (float)Math.Asin(-Y / Math.Sqrt(1 - X * X));
+                float asiny = (float)Math.Asin(X);
+
+                return new Vector3(asinx, asiny, 0);               
+            }
         }
 
         public static string PrintVector(this Vector3 Vector) => $"{Vector.X,5:F2} {Vector.Y,5:F2} {Vector.Z,5:F2}";

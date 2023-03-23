@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Threading;
+
 using Microsoft.DirectX;
 
 using GraphicModellingLibrary;
@@ -24,10 +26,13 @@ namespace Drawing
         Point Previous = new Point();
         Point Current = new Point();
 
+        List<KinematicPairMesh> _pairs = new List<KinematicPairMesh>();
+
         PointF MouseSpeed => new PointF((Current - (Size)Previous).X * _mouse_modifier, (Current - (Size)Previous).Y * _mouse_modifier);
 
         readonly float _mouse_modifier = 1E-2f;
 
+        List<NumericUpDown> updowns;
         public Form1(IFormDisplayer Displayer)
         {
             InitializeComponent();
@@ -41,6 +46,18 @@ namespace Drawing
             {
                 _displayKeys[item] = false;
             }
+            updowns = new List<NumericUpDown>()
+            {
+                Fi1_Updown,
+                Fi2_Updown,
+                Fi3_Updown,
+                Fi4_Updown,
+                Fi5_Updown,
+                Fi6_Updown
+            };
+
+            updowns.ForEach(updown => updown.Enabled = false);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -54,32 +71,40 @@ namespace Drawing
 
 
             KinematicPair previous_pair = null;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 7; i++)
             {
                 var _pair = new KinematicPair(5.0f)
                 {
                     LinkHolder = previous_pair,
                     
                 };
-                IObjectToDisplay pair = new KinematicPairMesh(_formDisplayer, _pair);
+                KinematicPairMesh pair = new KinematicPairMesh(_formDisplayer, _pair);
                 previous_pair = _pair;
+                _pairs.Add(pair);
             }
                    
-            _formDisplayer.RetrieveCamera(new Vector3(0, 3, 5.0f));
+            _formDisplayer.RetrieveCamera(new Vector3(25, 25, 25));
+            updowns.ForEach(updown => {
+               updown.Value = Convert.ToDecimal(_pairs[Convert.ToInt32(updown.Tag)].Pair.Fi / Math.PI * 180.0);
+            });
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             _formDisplayer.Paint();
+            updowns.ForEach(updown => updown.Update());
 
             var current_speed = MouseSpeed;
             _formDisplayer.UserControl(_displayKeys.Where(key => key.Value).Select(key => key.Key));
             _formDisplayer.MouseControl(0, 0);
             Current = Previous;
+
+            Thread.Sleep(10);
         }
 
         public void OnIdle(object sender, EventArgs e)
         {
+
             Invalidate(); // Помечаем главное окно (this) как требующее перерисовки
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -109,5 +134,16 @@ namespace Drawing
         {
         }
 
+        private void UpDownValueChanged(object sender, EventArgs e)
+        {
+            var updown = (NumericUpDown)sender;
+
+            _pairs[Convert.ToInt32(updown.Tag)].Pair.Fi = (double)updown.Value * Math.PI / 180.0;
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            updowns.ForEach(updown => updown.Enabled = !updown.Enabled);
+        }
     }
 }
