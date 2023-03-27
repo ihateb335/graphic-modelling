@@ -32,7 +32,8 @@ namespace Drawing
 
         readonly float _mouse_modifier = 1E-2f;
 
-        List<NumericUpDown> updowns;
+        List<NumericUpDown> updowns; 
+        List<Control> controls;
         public Form1(IFormDisplayer Displayer)
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace Drawing
             {
                 _displayKeys[item] = false;
             }
+
             updowns = new List<NumericUpDown>()
             {
                 Fi1_Updown,
@@ -57,7 +59,11 @@ namespace Drawing
             };
 
             updowns.ForEach(updown => updown.Enabled = false);
-
+            controls = new List<Control>(updowns)
+            {
+                test_output,
+                test_output1
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,7 +98,7 @@ namespace Drawing
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             _formDisplayer.Paint();
-            updowns.ForEach(updown => updown.Update());
+            controls.ForEach(c => c.Update());
 
             var current_speed = MouseSpeed;
             _formDisplayer.UserControl(_displayKeys.Where(key => key.Value).Select(key => key.Key));
@@ -104,7 +110,6 @@ namespace Drawing
 
         public void OnIdle(object sender, EventArgs e)
         {
-
             Invalidate(); // Помечаем главное окно (this) как требующее перерисовки
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -114,6 +119,8 @@ namespace Drawing
                 _displayKeys[e.KeyCode] = true;
             }
             if (e.KeyCode == Keys.Escape) Close();
+
+            e.SuppressKeyPress = true;
         }
 
 
@@ -123,22 +130,21 @@ namespace Drawing
             {
                 _displayKeys[e.KeyCode] = false;
             }
-        }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void Form1_MouseEnter(object sender, EventArgs e)
-        {
+            e.SuppressKeyPress = true;
         }
 
         private void UpDownValueChanged(object sender, EventArgs e)
         {
             var updown = (NumericUpDown)sender;
-
+            if (updown.Value > 360) updown.Value %= 360;
+            if (updown.Value < 0) updown.Value = 360 - Math.Abs(updown.Value) % 360;
             _pairs[Convert.ToInt32(updown.Tag)].Pair.Fi = (double)updown.Value * Math.PI / 180.0;
+
+            //var vect1 = _pairs[Convert.ToInt32(updown.Tag)].Diff;
+            //var vect = _pairs[Convert.ToInt32(updown.Tag)].Test();
+            //test_output1.Text = $"X: {vect1.X, 2:f2},Y: {vect1.Y,2:f2},Z: {vect1.Z,2:f2}" ;
+            //test_output.Text = $"X: {vect.X, 2:f2},Y: {vect.Y,2:f2},Z: {vect.Z,2:f2}" ;
         }
 
         private void Form1_Click(object sender, EventArgs e)

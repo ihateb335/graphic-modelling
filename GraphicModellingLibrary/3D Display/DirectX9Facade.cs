@@ -83,7 +83,8 @@ namespace GraphicModellingLibrary._3D_Display
         private void SetLight()
         {
             d3d.Lights[0].Diffuse = Color.White;
-            d3d.Lights[0].Position = new Vector3(CameraPosition.X, CameraPosition.Y, CameraPosition.Z);
+            d3d.Lights[0].Position= CameraPosition;
+            d3d.Lights[0].Direction=CameraTarget;
             d3d.Lights[0].Enabled = true;
         }
 
@@ -99,9 +100,9 @@ namespace GraphicModellingLibrary._3D_Display
 
             d3d.BeginScene();
 
-            SetLight();
-
             SetupCamera();
+
+            SetLight();
 
             observers.ForEach(o => o.OnNext(d3d));
 
@@ -143,6 +144,10 @@ namespace GraphicModellingLibrary._3D_Display
 
         public void UserControl(IEnumerable<Keys> keyValues)
         {
+            const float camera_multiplier = 0.05f;
+            const float camera_targer_multiplier = 1;
+
+
             Vector3 Forward = Vector3.Subtract(CameraTarget, CameraPosition); Forward.Normalize();
             Vector3 Left = new Vector3(-Forward.Z, 0.0f, Forward.X); Left.Normalize();
             Vector3 Up = Vector3.Cross(Left, Forward); Up.Normalize();
@@ -155,9 +160,9 @@ namespace GraphicModellingLibrary._3D_Display
             Vector3 camera_target = new Vector3();
 
 
-            Vector3 x_vector = new Vector3(0.05f, 0, 0);
-            Vector3 y_vector = new Vector3(0, 0.05f, 0);
-            Vector3 z_vector = new Vector3(0, 0, 0.05f);
+            Vector3 x_vector = new Vector3(camera_targer_multiplier, 0, 0);
+            Vector3 y_vector = new Vector3(0, camera_targer_multiplier, 0);
+            Vector3 z_vector = new Vector3(0, 0, camera_targer_multiplier);
             foreach (var e in keyValues)
             {
                 switch (e)

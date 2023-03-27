@@ -44,7 +44,7 @@ namespace GraphicModellingLibrary._3D_Display
         {
             Dispose();
         }
-        public Vector3 Previous { get
+        internal Vector3 Previous { get
             {
                 Vector3 previous = new Vector3();
                 if (Pair.LinkHolder != null)
@@ -55,20 +55,22 @@ namespace GraphicModellingLibrary._3D_Display
             }
         }
 
-        public Vector3 Current => Pair.AbsLink().Vector3DX();
-        public Vector3 Orient => (Current - Previous).OrientVector();
+        internal Vector3 Current => Pair.AbsLink().Vector3DX();
+        internal Vector3 CylinderVector => new Vector3(0, 0, Pair.Length);
         public void OnNext(Device d3d)
         {
             if (Cylinder != null)
             {
                 d3d.Material = CylinderMaterial;
-
-                Vector3 orient = Orient;
                 Vector3 translate = (Previous + Current) * 0.5f;
 
                 // A * My * Mz * Mx + T
 
-                d3d.Transform.World = Matrix.RotationY(orient.Y) * Matrix.RotationZ(orient.Z) * Matrix.RotationX(orient.X) * Matrix.Translation(translate);
+                //d3d.Transform.World = Matrix.RotationY(orient.Y) * Matrix.RotationZ(orient.Z) * Matrix.RotationX(orient.X) * Matrix.Translation(translate);
+
+                // A * M + T
+
+                d3d.Transform.World = CylinderVector.OrientVector(Current - Previous) * Matrix.Translation(translate);
                 Cylinder.DrawSubset(0);
             }
         }

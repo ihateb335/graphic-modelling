@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3D Display\AxisDisplay.cs" />
+    <Compile Include="3D Display\DirecctXExtensions.cs" />
     <Compile Include="3D Display\DirectX9Facade.cs" />
     <Compile Include="3D Display\Interfaces\IFormDisplayer.cs" />
     <Compile Include="3D Display\Interfaces\IObjectToDisplay.cs" />

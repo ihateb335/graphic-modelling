@@ -13,10 +13,6 @@ namespace GraphicModellingLibrary
 {
     public static class Vector3Extensions
     {
-        public static Vector3DX OrientVector(this Vector3DX vector)
-        {
-            return vector.Vector3FromDX().OrientVector().Vector3DX();
-        }
         public static Vector3 OrientVector(this Vector3 vector)
         {
             float X = (float)Math.Round(vector.X, 2),
@@ -58,7 +54,7 @@ namespace GraphicModellingLibrary
             }
 
             //6) X!=0, Y!=0, Z=0 
-            else if (X == 0 && Y != 0 && Z != 0)
+            else if (X != 0 && Y != 0 && Z == 0)
             {
                 float acos = (float)Math.Acos(X / Math.Sqrt(Y * Y + X * X));
                 if (X < 0) acos = -acos;
@@ -79,7 +75,6 @@ namespace GraphicModellingLibrary
 
         public static PointF Vector3ToPoint(this Vector3 vector) => new PointF { X = vector.X, Y = vector.Y };
         public static Vector3 PointToVector3(this PointF vector) => new Vector3 { X = vector.X, Y = vector.Y };
-        public static Vector3DX Vector3DX(this Vector3 vector) => new Vector3DX { X = vector.X,Y = vector.Y, Z = vector.Z };
         public static Vector3 Vector3FromDX(this Vector3DX vector) => new Vector3 { X = vector.X,Y = vector.Y, Z = vector.Z };
 
         public static double[,] VectorsToMatrix(this Vector3[] vectors)
