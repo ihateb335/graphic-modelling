@@ -63,7 +63,9 @@
     <Compile Include="3D Display\Interfaces\IFormDisplayer.cs" />
     <Compile Include="3D Display\Interfaces\IObjectToDisplay.cs" />
     <Compile Include="3D Display\KinematicPairMesh.cs" />
+    <Compile Include="3D Display\TargetMesh.cs" />
     <Compile Include="3D Display\TestTriangle.cs" />
+    <Compile Include="Algebra.cs" />
     <Compile Include="KinematicPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector3Extensions.cs" />
