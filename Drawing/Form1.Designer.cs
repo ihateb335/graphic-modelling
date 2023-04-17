@@ -31,12 +31,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.GRUB = new System.Windows.Forms.NumericUpDown();
             this.Calculate = new System.Windows.Forms.Button();
             this.NZ = new System.Windows.Forms.NumericUpDown();
             this.NY = new System.Windows.Forms.NumericUpDown();
             this.NX = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.test_output1 = new System.Windows.Forms.TextBox();
             this.test_output = new System.Windows.Forms.TextBox();
             this.Fi6_Updown = new System.Windows.Forms.NumericUpDown();
             this.Fi5_Updown = new System.Windows.Forms.NumericUpDown();
@@ -45,6 +45,7 @@
             this.Fi2_Updown = new System.Windows.Forms.NumericUpDown();
             this.Fi1_Updown = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GRUB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NX)).BeginInit();
@@ -58,12 +59,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.GRUB);
             this.panel1.Controls.Add(this.Calculate);
             this.panel1.Controls.Add(this.NZ);
             this.panel1.Controls.Add(this.NY);
             this.panel1.Controls.Add(this.NX);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.test_output1);
             this.panel1.Controls.Add(this.test_output);
             this.panel1.Controls.Add(this.Fi6_Updown);
             this.panel1.Controls.Add(this.Fi5_Updown);
@@ -76,6 +77,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(127, 390);
             this.panel1.TabIndex = 0;
+            // 
+            // GRUB
+            // 
+            this.GRUB.AutoSize = true;
+            this.GRUB.DecimalPlaces = 2;
+            this.GRUB.Enabled = false;
+            this.GRUB.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.GRUB.Location = new System.Drawing.Point(0, 170);
+            this.GRUB.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.GRUB.Name = "GRUB";
+            this.GRUB.Size = new System.Drawing.Size(127, 20);
+            this.GRUB.TabIndex = 14;
+            this.GRUB.Tag = "6";
+            this.GRUB.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.GRUB.ValueChanged += new System.EventHandler(this.GRUB_ValueChanged);
             // 
             // Calculate
             // 
@@ -112,6 +136,7 @@
             0,
             0,
             65536});
+            this.NZ.ValueChanged += new System.EventHandler(this.NXYZ_ValueChanged);
             // 
             // NY
             // 
@@ -138,6 +163,7 @@
             0,
             0,
             65536});
+            this.NY.ValueChanged += new System.EventHandler(this.NXYZ_ValueChanged);
             // 
             // NX
             // 
@@ -164,24 +190,16 @@
             0,
             0,
             -2147418112});
+            this.NX.ValueChanged += new System.EventHandler(this.NXYZ_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 177);
+            this.label1.Location = new System.Drawing.Point(3, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Grub";
-            // 
-            // test_output1
-            // 
-            this.test_output1.Location = new System.Drawing.Point(3, 334);
-            this.test_output1.Name = "test_output1";
-            this.test_output1.ReadOnly = true;
-            this.test_output1.Size = new System.Drawing.Size(127, 20);
-            this.test_output1.TabIndex = 8;
-            this.test_output1.TabStop = false;
             // 
             // test_output
             // 
@@ -367,7 +385,7 @@
             this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Семиланковий маніпулятор";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
@@ -376,6 +394,7 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GRUB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NX)).EndInit();
@@ -399,11 +418,11 @@
         private System.Windows.Forms.NumericUpDown Fi2_Updown;
         private System.Windows.Forms.NumericUpDown Fi1_Updown;
         private System.Windows.Forms.TextBox test_output;
-        private System.Windows.Forms.TextBox test_output1;
         private System.Windows.Forms.NumericUpDown NZ;
         private System.Windows.Forms.NumericUpDown NY;
         private System.Windows.Forms.NumericUpDown NX;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Calculate;
+        private System.Windows.Forms.NumericUpDown GRUB;
     }
 }

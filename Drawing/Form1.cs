@@ -19,7 +19,7 @@ namespace Drawing
 {
     public partial class Form1 : Form
     {
-        IFormDisplayer _formDisplayer;
+        IDirectXFormDisplayer _formDisplayer;
 
         Dictionary<Keys, bool> _displayKeys = new Dictionary<Keys, bool>();
 
@@ -47,7 +47,7 @@ namespace Drawing
 
         List<NumericUpDown> updowns; 
         List<Control> controls;
-        public Form1(IFormDisplayer Displayer)
+        public Form1(IDirectXFormDisplayer Displayer)
         {
             InitializeComponent();
 
@@ -78,8 +78,8 @@ namespace Drawing
             controls = new List<Control>(updowns)
             {
                 test_output,
-                test_output1,
-                Calculate
+                Calculate,
+                GRUB
             };
 
             Calculate.Enabled = false;
@@ -93,11 +93,16 @@ namespace Drawing
         List<double[,]> matrices;
 
         TargetMesh Target;
+        KinematicArmMesh KinematicArm;
 
         private void InitializeTransformMatrices()
         {
             double[,] defaultMtx = { { 0, 0, 1 }, { 1, 0, 0 }, { 0, 1, 0 } };
-            double[,] ordinaryMtx = { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
+            double[,] ordinaryMtx = { 
+                { 0, 1, 0 },
+                { 1, 0, 0 },
+                { 0, 0, 1 } 
+            };
 
             matrices = new List<double[,]>
             {
@@ -128,6 +133,7 @@ namespace Drawing
                 _pairs.Add(pair);
             }
 
+            KinematicArm = new KinematicArmMesh(_formDisplayer, previous_pair, Color.Pink);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -146,6 +152,10 @@ namespace Drawing
 
           
             _formDisplayer.RetrieveCamera(new Vector3(CAMERA_POSITION_MODIFIER, CAMERA_POSITION_MODIFIER, -CAMERA_POSITION_MODIFIER));
+
+            var vect = _pairs.Last().Pair.AbsLink();
+
+            test_output.Text = $"X: {vect.X,2:f2},Y: {vect.Y,2:f2},Z: {vect.Z,2:f2}";
         }
 
         private void IterateCurrent()
@@ -239,17 +249,25 @@ namespace Drawing
         {
             updowns.ForEach(updown => updown.Enabled = !updown.Enabled);
             Calculate.Enabled = !Calculate.Enabled;
+            GRUB.Enabled = !GRUB.Enabled;
         }
 
         private int operating_on = -1;
 
         private void Calculate_Click(object sender, EventArgs e)
         {
+            foreach(var u in updowns.Take(6))
+            {
+                u.Value = 0;
+            }
             var X = Convert.ToSingle(NX.Value);
             var Y = Convert.ToSingle(NY.Value);
             var Z = Convert.ToSingle(NZ.Value);
+            var TargetPosition = new Vector3(X, Y, Z);
 
-            Target.Position = new Vector3(X,Y,Z);
+            if (!CheckDesiredPoint(TargetPosition)) return;
+
+            Target.Position = TargetPosition;
             Target.Show = true;
 
             var fis = KinematicPair.ReverseJob(_pairs.Last().Pair, new System.Numerics.Vector3(X,Y,Z));
@@ -267,6 +285,70 @@ namespace Drawing
             }
 
             _pairs[operating_on].Ready = true;
+        }
+
+        private bool CheckDesiredPoint(Vector3 desiredPoint)
+        {
+            // d - длина звена
+            double[] d = new double[PAIRS];
+
+            for (int i = 0; i < d.Length; i++)
+            {
+                d[i] = _pairs[i].Pair.Length;
+            }
+
+            // Максимальное растояние от первого неподвижного хвата
+            double dpMax = Math.Sqrt(Math.Pow(d[2] + d[4] + d[6], 2) + Math.Pow(d[1] + d[3] + d[5], 2));
+
+            // set Y bound
+            double a = d[0] - (d[2] + d[4] + d[6]);
+            double b = d[0] + (d[2] + d[4] + d[6]);
+
+            //  Label #1: "a<yA<b"
+            double yA = desiredPoint.Y;
+
+            // Если значение Y за пределом - выдать ошибку.
+            if (yA <= a || yA >= b)
+            {
+                Calculate.BackColor = Color.Red;
+                return false;
+            }
+
+            // set X bound
+            double c = Math.Sqrt(Math.Pow(dpMax, 2) - Math.Pow(d[0] - yA, 2));
+            //  Label #2: "|xA|<c"
+            double xA = Math.Abs(desiredPoint.X);
+
+            // Если значение X за пределом - выдать ошибку.
+            if (xA >= c)
+            {
+                Calculate.BackColor = Color.Red;
+                return false;
+            }
+
+            // set Z bound
+            double f = Math.Sqrt(Math.Pow(c, 2) - Math.Pow(xA, 2));
+            //  Label #3: "|zA|< f"
+            double zA = Math.Abs(desiredPoint.Z);
+
+            // Если значение Z за пределом - выдать ошибку.
+            if (zA >= f)
+            {
+                Calculate.BackColor = Color.Red;
+                return false;
+            }
+            Calculate.BackColor = SystemColors.Control;
+            return true;
+        }
+
+        private void GRUB_ValueChanged(object sender, EventArgs e)
+        {
+            KinematicArm.Fi = (double)GRUB.Value / 180 * Math.PI;
+        }
+
+        private void NXYZ_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

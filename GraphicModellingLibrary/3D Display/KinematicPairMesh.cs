@@ -15,7 +15,7 @@ namespace GraphicModellingLibrary._3D_Display
         public static readonly float Slope = (float)Math.PI / 100.0f;
         public readonly float CylinderRadius;
 
-        public KinematicPairMesh(IFormDisplayer observable, KinematicPair pair, Color color, float cylinder_radius = 0.025f)
+        public KinematicPairMesh(IDirectXDisplayer observable, KinematicPair pair, Color color, float cylinder_radius = 0.025f)
         {
             observable.Subscribe(this);
 
@@ -30,7 +30,7 @@ namespace GraphicModellingLibrary._3D_Display
 
             Cylinder = Mesh.Cylinder(observable.d3d, cylinder_radius, cylinder_radius, pair.Length + 2.0f * cylinder_radius, 100, 100);
         }
-        public KinematicPairMesh(IFormDisplayer observable, KinematicPair pair, float cylinder_radius = 0.25f) : this(observable, pair, Color.Pink, cylinder_radius) { }
+        public KinematicPairMesh(IDirectXFormDisplayer observable, KinematicPair pair, float cylinder_radius = 0.25f) : this(observable, pair, Color.Pink, cylinder_radius) { }
         public KinematicPair Pair { get; private set; }
 
         private Mesh Cylinder;

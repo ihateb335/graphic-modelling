@@ -10,8 +10,13 @@ using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
 
 namespace GraphicModellingLibrary._3D_Display
-{
-    public interface IFormDisplayer : IDisposable, IObservable<Device>
+{    
+
+    public interface IDirectXDisplayer : IDisposable, IObservable<Device>
+    {
+        Device d3d { get; }
+    }
+    public interface IDirectXFormDisplayer : IDirectXDisplayer
     {
         bool BuildUp(Control render_object);
         void RetrieveCamera(Vector3 vector);
@@ -23,8 +28,6 @@ namespace GraphicModellingLibrary._3D_Display
 
         int Width { get; set; }
         int Height { get; set; }
-
-        Device d3d { get; }
 
         Keys[] keys { get; }
 

@@ -13,7 +13,7 @@ namespace GraphicModellingLibrary._3D_Display
 {
     public class AxisDisplay : IObjectToDisplay
     {
-        public AxisDisplay(IFormDisplayer observable)
+        public AxisDisplay(IDirectXFormDisplayer observable)
         {
             observable.Subscribe(this);
 

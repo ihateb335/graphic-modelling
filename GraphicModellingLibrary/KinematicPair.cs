@@ -19,7 +19,8 @@ namespace GraphicModellingLibrary
         /// <summary>
         /// Rotation matrix - M in notation
         /// </summary>
-        public double[,] M => GetM(Fi);
+        public double[,] M => MForm(Fi);
+        public Func<double, double[,]> MForm = GetM;
 
         public static double[,] GetM(double Fi) => new double[3, 3] {
                  { Math.Cos(Fi),  -Math.Sin(Fi), 0.0 },

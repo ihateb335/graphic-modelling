@@ -111,6 +111,38 @@ namespace GraphicModellingLibrary
             return result;
         }
 
+        public static double[,] RightMultiply(this double[,] A, double[,] B)
+        {
+            int rowsA = A.GetLength(0);
+            int colsA = A.GetLength(1);
+            int rowsB = B.GetLength(0);
+            int colsB = B.GetLength(1);
+
+            if (colsA != rowsB) 
+                throw new ArgumentException("Matrices cannot be multiplied. The number of columns in the first matrix must match the number of rows in the second matrix.");
+        
+
+
+            double[,] result = new double[rowsA, colsB];
+
+            for (int i = 0; i < rowsA; i++)
+            {
+                for (int j = 0; j < colsB; j++)
+                {
+                    double sum = 0;
+
+                    for (int k = 0; k < colsA; k++)
+                    {
+                        sum += A[i, k] * B[k, j];
+                    }
+
+                    result[i, j] = sum;
+                }
+            }
+
+            return result;
+        }
+
         // Умножить матрицу слева на вектор справа
         public static Vector3 LeftMultiply(this Vector3 origin, double[,] matrix)
         {
@@ -130,6 +162,27 @@ namespace GraphicModellingLibrary
 
             return result;
         }
+
+        // Умножить матрицу слева на вектор справа
+        public static Vector3DX LeftMultiply(this Vector3DX origin, double[,] matrix)
+        {
+            return origin.RightMultiply(matrix.Transpose());
+        }
+
+        // Умножить вектор слева на матрицу справа
+        public static Vector3DX RightMultiply(this Vector3DX origin, double[,] matrix)
+        {
+            double[,] buffer = matrix;
+
+            double newX = origin.X * buffer[0, 0] + origin.Y * buffer[1, 0] + origin.Z * buffer[2, 0];
+            double newY = origin.X * buffer[0, 1] + origin.Y * buffer[1, 1] + origin.Z * buffer[2, 1];
+            double newZ = origin.X * buffer[0, 2] + origin.Y * buffer[1, 2] + origin.Z * buffer[2, 2];
+
+            var result = new Vector3DX(Convert.ToSingle(newX), Convert.ToSingle(newY), Convert.ToSingle(newZ));
+
+            return result;
+        }
+
 
         public static void Print(this double[,] matrix, string marker = "Маркер перехода")
         {

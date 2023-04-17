@@ -13,7 +13,7 @@ using Microsoft.DirectX.Direct3D;
 namespace GraphicModellingLibrary._3D_Display
 {
     public delegate void InvalidateDelegate();
-    public class DirectX9Facade : IFormDisplayer
+    public class DirectX9Facade : IDirectXFormDisplayer
     {
         public Device d3d { get; private set; } =  null;
 
@@ -253,13 +253,15 @@ namespace GraphicModellingLibrary._3D_Display
             //CameraTarget += new Vector3(X, Y, 0);
         }
 
-        private class Subscription : IDisposable
-        {
-            public void Dispose()
-            {
-               throw new NotImplementedException();
-            }
-        }
+       
 
+    }
+
+    internal class Subscription : IDisposable
+    {
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

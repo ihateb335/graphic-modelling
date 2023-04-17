@@ -14,7 +14,7 @@ namespace GraphicModellingLibrary._3D_Display
     public sealed class TargetMesh : IObjectToDisplay
     {
 
-        public TargetMesh(IFormDisplayer observable, Color color, float target_radius = 0.35f)
+        public TargetMesh(IDirectXDisplayer observable, Color color, float target_radius = 0.35f)
         {
             observable.Subscribe(this);
 
