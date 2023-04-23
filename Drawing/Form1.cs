@@ -155,6 +155,8 @@ namespace Drawing
 
             var vect = _pairs.Last().Pair.AbsLink();
 
+            NXYZ_ValueChanged(sender, EventArgs.Empty);
+
             test_output.Text = $"X: {vect.X,2:f2},Y: {vect.Y,2:f2},Z: {vect.Z,2:f2}";
         }
 
@@ -265,8 +267,6 @@ namespace Drawing
             var Z = Convert.ToSingle(NZ.Value);
             var TargetPosition = new Vector3(X, Y, Z);
 
-            if (!CheckDesiredPoint(TargetPosition)) return;
-
             Target.Position = TargetPosition;
             Target.Show = true;
 
@@ -287,8 +287,10 @@ namespace Drawing
             _pairs[operating_on].Ready = true;
         }
 
-        private bool CheckDesiredPoint(Vector3 desiredPoint)
+        private void CheckDesiredPoint(Vector3 desiredPoint)
         {
+            double IsNanToZero(double value) => double.IsNaN(value) ? 0 : value;
+
             // d - длина звена
             double[] d = new double[PAIRS];
 
@@ -298,7 +300,8 @@ namespace Drawing
             }
 
             // Максимальное растояние от первого неподвижного хвата
-            double dpMax = Math.Sqrt(Math.Pow(d[2] + d[4] + d[6], 2) + Math.Pow(d[1] + d[3] + d[5], 2));
+            double dpMax = Math.Sqrt((d[2] + d[4] + d[6]) * (d[2] + d[4] + d[6])
+                + (d[1] + d[3] + d[5]) * (d[1] + d[3] + d[5]));
 
             // set Y bound
             double a = d[0] - (d[2] + d[4] + d[6]);
@@ -308,37 +311,26 @@ namespace Drawing
             double yA = desiredPoint.Y;
 
             // Если значение Y за пределом - выдать ошибку.
-            if (yA <= a || yA >= b)
-            {
-                Calculate.BackColor = Color.Red;
-                return false;
-            }
+            NY.Minimum = (decimal)IsNanToZero(a);
+            NY.Maximum = (decimal)IsNanToZero(b);
 
             // set X bound
-            double c = Math.Sqrt(Math.Pow(dpMax, 2) - Math.Pow(d[0] - yA, 2));
+            double c = Math.Sqrt(dpMax * dpMax - (d[0] - yA) * (d[0] - yA));
             //  Label #2: "|xA|<c"
             double xA = Math.Abs(desiredPoint.X);
 
             // Если значение X за пределом - выдать ошибку.
-            if (xA >= c)
-            {
-                Calculate.BackColor = Color.Red;
-                return false;
-            }
+            NX.Minimum = (decimal)IsNanToZero(-c);
+            NX.Maximum = (decimal)IsNanToZero(c);
 
             // set Z bound
-            double f = Math.Sqrt(Math.Pow(c, 2) - Math.Pow(xA, 2));
+            double f = Math.Sqrt(c * c - xA * xA);
             //  Label #3: "|zA|< f"
             double zA = Math.Abs(desiredPoint.Z);
 
             // Если значение Z за пределом - выдать ошибку.
-            if (zA >= f)
-            {
-                Calculate.BackColor = Color.Red;
-                return false;
-            }
-            Calculate.BackColor = SystemColors.Control;
-            return true;
+            NZ.Minimum = (decimal)IsNanToZero(- f);
+            NZ.Maximum = (decimal)IsNanToZero(f);
         }
 
         private void GRUB_ValueChanged(object sender, EventArgs e)
@@ -348,7 +340,12 @@ namespace Drawing
 
         private void NXYZ_ValueChanged(object sender, EventArgs e)
         {
+            var X = Convert.ToSingle(NX.Value);
+            var Y = Convert.ToSingle(NY.Value);
+            var Z = Convert.ToSingle(NZ.Value);
+            var TargetPosition = new Vector3(X, Y, Z);
 
+            CheckDesiredPoint(TargetPosition);
         }
     }
 }
